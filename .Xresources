@@ -22,7 +22,7 @@ URxvt.color15:    #FFFFFF
 
 ! Fake Transparency
 URxvt.transparent: true
-URxvt.shading: 60
+URxvt.shading: 40
 
 !! URxvt Appearance
 URxvt.font: xft:Source Code Pro:regular:pixelsize=15
@@ -49,16 +49,15 @@ URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
 
+
+
 !! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,keyboard-select
-URxvt.copyCommand: xclip -i -selection keyboard-select
-URxvt.pasteCommand: xclip -o -selection keyboard-select
-URxvt.keysym.M-c: perl:keyboard-select:copy
-URxvt.keysym.M-v: perl:keyboard-select:paste
-URxvt.keysym.M-C-v: perl:keyboard-select:paste_escaped
+URxvt.perl-ext-common: default,selection-to-clipboard,keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
+URxvt.keysym.Control-V: eval:paste_clipboard
+URxvt.keysym.Control-C: eval:selection_to_clipboard
