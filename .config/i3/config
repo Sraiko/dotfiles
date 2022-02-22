@@ -41,6 +41,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+#start a script to setup displays
+#exec --no-startup-id ~/.screenlayout/monitor.sh
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -122,8 +125,8 @@ bindsym $mod+a focus parent
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4"
-set $ws5 "5"
+set $ws4 "4:"
+set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -131,14 +134,16 @@ set $ws9 "9"
 set $ws10 "10"
 
 # bind program to workspace
-assign [class="Xfce4-terminal"] $ws1
+assign [class="URxvt"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Nautilus"] $ws3
+assign [class="code"] $ws4
 
 # set focus to new window automatically if program opens on a different workspace
-for_window [class=Xfce4-terminal] focus
+for_window [class=URxvt] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Nautilus] focus
+for_window [class=code] focus
 
 #set gaps
 #gaps inner 4
@@ -260,7 +265,8 @@ client.urgent                $urgentred  $urgentred      $white          $purple
 #}
 
 
-exec polybar example
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec polybar -r example
 #set floating for special apps
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
@@ -268,14 +274,12 @@ for_window [class="Galculator" instance="galculator"] floating enable
 
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
+
 #auth with lxsession
 exec --no-startup-id lxsession
 
 #num lock activated
-exec --no-startup-id numlockx on
-
-#start a script to setup displays
-exec --no-startup-id ~./.screenlayout/monitor.sh
+#exec --no-startup-id numlockx on
 
 #App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
@@ -286,3 +290,5 @@ bindsym Print exec "scrot ~/images/%Y-%m-%d-%T-screenshot.png"
 
 #transparency
 exec_always compton -f
+
+exec setxkbmap -layout 'es,es' -model pc105
