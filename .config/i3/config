@@ -126,9 +126,9 @@ set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6"
-set $ws7 "7"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -138,12 +138,16 @@ assign [class="URxvt"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Nautilus"] $ws3
 assign [class="code"] $ws4
+assign [class="steam-native"] $ws5
+assign [class="discord"] $ws6
+assign [class="nuclear"] $ws7
 
 # set focus to new window automatically if program opens on a different workspace
 for_window [class=URxvt] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Nautilus] focus
 for_window [class=code] focus
+for_window [class=nuclear] focus
 
 #set gaps
 #gaps inner 4
@@ -271,6 +275,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
+#for_window [class="nuclear"] floating enable
 
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
@@ -284,11 +289,12 @@ exec --no-startup-id lxsession
 #App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/nautilus
-bindsym Print exec "scrot ~/images/%Y-%m-%d-%T-screenshot.png"
+bindsym $mod+shift+p exec "scrot ~/imagenes/%Y-%m-%d-%T-screenshot.png"
 
 
 
 #transparency
 exec_always compton -f
 
-exec setxkbmap -layout 'es,es' -model pc105
+exec_always setxkbmap -layout 'es,es' -model pc105
+exec xset -dpms s off

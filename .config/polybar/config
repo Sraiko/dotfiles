@@ -33,12 +33,13 @@ alert = #bd2c40
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -56,14 +57,18 @@ module-margin-left = 1
 module-margin-right = 2
 
 ;font-0 = fixed:pixelsize=10;2
-font-0 = NotoSans-Regular:pixelsize=11:weight=bold;2
-font-1 = unifont:fontformat=truetype:size=12:antialias=false;2
-font-2 = siji:pixelsize=12;2
-font-3 = fontawesome:pixelsize=12;3
+font-0 = Noto Sans:style=Regular:pixelsize=11:weight=bold;2
+font-1 = Unifont:style=Sans-Serif:fontformat=truetype:size=12:antialias=false;2
+font-2 = Siji:style=Regular:pixelsize=12;2
+#font-3 = fontawesome:pixelsize=12;3
+font-3 = Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:pixelsize=12;3
+font-4 = Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:pixelsize=10;3
+font-5 = Font Awesome v4 Compatibility,Font Awesome v4 Compatibility Regular:style=Regular:pixelsize=13;3
+font-6 = Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:pixelsize=13;3
 
 modules-left = bspwm i3
-modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu  temperature date powermenu
+modules-center = xwindow mpd
+modules-right = filesystem backlight alsa pulseaudio memory cpu  temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -85,8 +90,8 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
-
+label = %title:0:90:...%
+;label = %title%
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -109,7 +114,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /mnt/Almacen/
+mount-1 = /mnt/Almacen
 
 ;label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
 label-mounted = %mountpoint%: %free%
@@ -147,7 +152,7 @@ wrapping-scroll = false
 strip-wsnumbers = true
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -174,7 +179,9 @@ label-visible = %icon% %name%
 ;label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 ;label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+;label-visible-padding = ${self.label-focused-padding}
+label-visible-padding = 4
+label-visible-padding-left= 3
 
 ; urgent = Workspace with urgency hint set
 label-urgen = %icon% %name%
@@ -345,7 +352,7 @@ label-warn-foreground = ${colors.secondary}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground}
 
 [module/powermenu]
 type = custom/menu
@@ -370,7 +377,7 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
 menu-2-0-exec = poweroff
