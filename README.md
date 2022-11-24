@@ -11,3 +11,5 @@
 + [Polybar](https://archlinux.org/packages/community/x86_64/polybar/)
 + [Lxsession](https://archlinux.org/packages/community/x86_64/lxsession/)
 + [Imagemagick](https://archlinux.org/packages/extra/x86_64/imagemagick/)
++ [Noto CJK fonts](https://archlinux.org/packages/extra/any/noto-fonts-cjk/)
++ [Font Awesome](https://archlinux.org/packages/community/any/ttf-font-awesome/)
