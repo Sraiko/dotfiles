@@ -1,28 +1,40 @@
 !! Colorscheme
 
-! Dracula color scheme
-URxvt.foreground: #F8F8F2
-URxvt.background: #282A36
-URxvt.color0:     #000000
-URxvt.color8:     #44475A
-URxvt.color1:     #FF5555
-URxvt.color9:     #FFB86C
-URxvt.color2:     #50FA7B
-URxvt.color10:    #50FA7B
-URxvt.color3:     #E6DB74
-URxvt.color11:    #F1FA8C
-URxvt.color4:     #6272A4
-URxvt.color12:    #6272A4
-URxvt.color5:     #BD93F9
-URxvt.color13:    #FF79C6
-URxvt.color6:     #8BE9FD
-URxvt.color14:    #66D9EF
-URxvt.color7:     #666666
-URxvt.color15:    #FFFFFF
+! Catppuccin color scheme
+URxvt.foreground: #CAD3F5
+URxvt.background: #24273A
+! black
+URxvt.color0:     #494D64
+URxvt.color8:     #5B6078
+! red
+URxvt.color1:     #ED8796
+URxvt.color9:     #ED8796
+! green
+URxvt.color2:     #A6DA95
+URxvt.color10:    #A6DA95
+! yellow
+URxvt.color3:     #EED49F
+URxvt.color11:    #EED49F
+! blue
+URxvt.color4:     #8AADF4
+URxvt.color12:    #8AADF4
+! magenta
+URxvt.color5:     #F5BDE6
+URxvt.color13:    #F5BDE6
+! cyan
+URxvt.color6:     #8BD5CA
+URxvt.color14:    #8BD5CA
+! white
+URxvt.color7:     #B8C0E0
+URxvt.color15:    #A5ADCB
 
+! Real Transparency
+urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
+urxvt*background: rgba:0036/0039/0058/c800
 ! Fake Transparency
-URxvt.transparent: true
-URxvt.shading: 40
+!URxvt.transparent: true
+!URxvt.shading: 0.70
 
 !! URxvt Appearance
 URxvt.font: xft:Source Code Pro:regular:pixelsize=15
