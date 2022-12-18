@@ -16,20 +16,20 @@
 ;
 ;==========================================================
 
-[colors]
+;[colors]
 ;background = ${xrdb:color0:#222}
 ;background = #191818
 ;background-alt = #444
-background = #16151d
-background-alt = #201f27
+;background = ${macchiato.base}
+;background-alt = #201f27
 ;foreground = ${xrdb:color7:#222}
-foreground = #d2d2d2
-foreground-alt = #555
+;foreground = #d2d2d2
+;foreground-alt = #555
 ;primary = #ffb52a
-primary = #d2d2d2
+;primary = #d2d2d2
 ;secondary = #e60053
-secondary = #ef2475
-alert = #bd2c40
+;secondary = #ef2475
+;alert = #bd2c40
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -41,8 +41,8 @@ height = 25
 ;radius = 6.0
 fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.base}
+foreground = ${colors.text}
 
 line-size = 3
 line-color = #f00
@@ -68,7 +68,7 @@ font-6 = Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:pixel
 
 modules-left = bspwm i3
 modules-center = xwindow mpd
-modules-right = filesystem backlight alsa pulseaudio memory cpu  temperature date powermenu
+modules-right = filesystem backlight alsa pulseaudio memory cpu date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -98,7 +98,7 @@ blacklist-0 = num lock
 
 ;format-prefix = " "
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.text}
 ;format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
@@ -106,27 +106,29 @@ label-layout = %layout%
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
+label-indicator-background = ${colors.text}
 ;label-indicator-underline = ${colors.secondary}
 
-[module/filesystem]
-type = internal/fs
-interval = 25
+;[module/filesystem]
+;type = internal/fs
+;interval = 25
 
-mount-0 = /
-mount-1 = /mnt/Almacen
+;mount-0 = /home
+;mount-1 = /mnt/Almacen
 
 ;label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
-label-mounted = %mountpoint%: %free%
+;label-mounted = %mountpoint%: %free%
 ;label-mounted =  %free%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground}
+;label-mounted-foreground = ${colors.sapphire}
+;label-unmounted = %mountpoint% not mounted
+;label-unmounted-foreground = ${colors.pink}
+
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.mantle}
 ;label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -134,11 +136,11 @@ label-occupied = %index%
 label-occupied-padding = 2
 
 label-urgent = %index%!
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.subtext0}
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -156,14 +158,14 @@ pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.mauve}
 
 ; focused = Active workspace on focused monitor
 
 label-focused = %icon% %name%
 ;label-focused = %index%
-;label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+;label-focused-background = ${colors.mantle}
+label-focused-underline= ${colors.mauve}
 label-focused-padding = 4
 label-focused-padding-left= 3
 
@@ -186,7 +188,7 @@ label-visible-padding-left= 3
 ; urgent = Workspace with urgency hint set
 label-urgen = %icon% %name%
 ;label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 4
 label-urgent-padding-left= 3
 
@@ -222,7 +224,7 @@ bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = ${colors.subtext0}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -234,7 +236,7 @@ type = internal/cpu
 interval = 2
 ;format-prefix = " "
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.sapphire}
 ;format-underline = #f90000
 label = %percentage:2%%
 
@@ -243,7 +245,7 @@ type = internal/memory
 interval = 2
 ;format-prefix = " "
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.flamingo}
 ;format-underline = #4bffdc
 label = %percentage_used%%
 
@@ -275,7 +277,7 @@ time = %H:%M
 ;time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.subtext0}
 ;format-underline = #0a6cf5
 
 label = %date% %time%
@@ -312,10 +314,10 @@ type = internal/alsa
 
 format-volume = <label-volume>
 label-volume =  %percentage%%
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.lavender}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.red}
 label-muted = muted
 
 ;bar-volume-width = 10
@@ -347,12 +349,12 @@ format-warn = <ramp> <label-warn>
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.red}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground}
+ramp-foreground = ${colors.text}
 
 [module/powermenu]
 type = custom/menu
@@ -363,11 +365,11 @@ format-spacing = 1
 
 ;label-open = 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.red}
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.red}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.subtext0}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -395,5 +397,5 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
+include-file = $HOME/.config/polybar/macchiato.ini
 ; vim:ft=dosini
