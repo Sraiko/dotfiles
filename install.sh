@@ -29,7 +29,7 @@ cp dotfiles/.bashrc ~
 
 #Installing programs I use
 sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
-yay -S transmission-gtk lxappearance file-roller ventoy-bin qemu ebtables steam vcodium timeshift scot 7-zip
+yay -S transmission-gtk lxappearance file-roller ventoy-bin qemu-base ebtables steam vscodium timeshift scot 7-zip
 
 #Setting papirus icons with catppuccin theme
 yay -S papirus-icon-theme-git
@@ -68,7 +68,7 @@ cd ..
 #Installing discord
 sudo pacman -S flatpak
 
-flatpak install discord
+flatpak install flathub com.discordapp.Discord
 sudo flatpak override com.discordapp.Discord --filesystem=home
 
 # Setting virt-manager permissions
