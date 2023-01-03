@@ -28,7 +28,7 @@ make -C ble.sh install PREFIX=~/.local
 cp dotfiles/.bashrc ~
 
 #Installing programs I use
-sudo pacman -S micro nitrogen firefox rofi lutris neofetch htop virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst archlinux-keyring zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
+sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
 yay -S transmission-gtk lxappearance file-roller ventoy-bin qemu ebtables steam vcodium timeshift scot 7-zip
 
 #Setting papirus icons with catppuccin theme
