@@ -13,25 +13,26 @@ cd ..
 cp -r dotfiles/.config ~
 
 #Installing and theming terminal
-yay -Yg rxvt-unicode
+yay -S rxvt-unicode
 cp dotfiles/.Xresources ~
 cp -r dotfiles/.urxvt ~
 
 #Installing needed fonts
-yay -Yg ttf-unifont noto-fonts siji-ttf noto-fonts-cjk ttf-font-awesome
+yay -S noto-fonts siji-ttf noto-fonts-cjk ttf-font-awesome
 
 #Installing bash autocompletion
-yay -Yg blesh-git
+git clone --recursive https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
 
 #Setting bash configuration
 cp dotfiles/.bashrc ~
 
 #Installing programs I use
-sudo pacman -S micro nitrogen firefox rofi steam lutris vscodium timeshift neofetch htop virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst archlinux-keyring zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility 7-zip arandr yarn unrar
-yay -Yg transmission-gtk lxappearance file-roller ventoy-bin qemu-full
+sudo pacman -S micro nitrogen firefox rofi lutris neofetch htop virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst archlinux-keyring zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
+yay -S transmission-gtk lxappearance file-roller ventoy-bin qemu ebtables steam vcodium timeshift scot 7-zip
 
 #Setting papirus icons with catppuccin theme
-yay -Yg papirus-icon-theme-git
+yay -S papirus-icon-theme-git
 
 sudo cp -r ~/dotfiles/usr ~
 
@@ -44,12 +45,13 @@ cd ..
 #Installing spotify and theming
 yay -S spotify-adblock
 
-yay -Yg spicetify-cli
 GROUP=$USER
 sudo chgrp $GROUP /opt/spotify
 sudo chgrp -R $GROUP /opt/spotify/Apps
 sudo chmod 775 /opt/spotify
 sudo chmod 775 -R /opt/spotify/Apps
+
+yay -S spicetify-cli
 
 git clone https://github.com/catppuccin/spicetify.git
 cd spicetify
