@@ -10,7 +10,7 @@ makepkg -si
 cd ..
 
 #Setting system theming configuration
-cp -r dotfiles/.config ~
+sudo cp -r dotfiles/.config ~
 
 #Installing and theming terminal
 yay -S rxvt-unicode
@@ -18,7 +18,7 @@ cp dotfiles/.Xresources ~
 cp -r dotfiles/.urxvt ~
 
 #Installing needed fonts
-yay -S noto-fonts siji-ttf noto-fonts-cjk ttf-font-awesome
+yay -S noto-fonts siji-ttf noto-fonts-cjk ttf-font-awesome nerd-fonts-jetbrains-mono bdf-unifont
 
 #Installing bash autocompletion
 git clone --recursive https://github.com/akinomyoga/ble.sh.git
@@ -26,13 +26,17 @@ make -C ble.sh install PREFIX=~/.local
 
 #Setting bash configuration
 cp dotfiles/.bashrc ~
-
+cp dotfiles/.git-prompt.sh ~
 #Installing programs I use
 sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
 yay -S transmission-gtk lxappearance file-roller ventoy-bin qemu-base ebtables steam vscodium timeshift scot 7-zip
 
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 #Setting papirus icons with catppuccin theme
-yay -S papirus-icon-theme-git
+yay -S catppuccin-gtk-theme-macchiato papirus-icon-theme-git oranchelo-icon-theme-git
+sudo cp -r dotfiles/usr ~
 
 sudo cp -r ~/dotfiles/usr ~
 
@@ -44,6 +48,8 @@ cd ..
 
 #Installing spotify and theming
 yay -S spotify-adblock
+
+spotify
 
 GROUP=$USER
 sudo chgrp $GROUP /opt/spotify
@@ -68,8 +74,8 @@ cd ..
 #Installing discord
 sudo pacman -S flatpak
 
-flatpak install flathub com.discordapp.Discord
-sudo flatpak override com.discordapp.Discord --filesystem=home
+#Enter manually after installing discord
+#sudo flatpak override com.discordapp.Discord --filesystem=home
 
 # Setting virt-manager permissions
 sudo usermod -a -G libvirt $USER
