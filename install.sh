@@ -32,7 +32,7 @@ cp dotfiles/.bashrc ~
 cp dotfiles/.git-prompt.sh ~
 
 #Installing programs I use
-sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
+sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar picom
 yay -S transmission-gtk file-roller ventoy-bin qemu-base ebtables steam vscodium timeshift 7-zip spotify-adblock
 
 
@@ -48,7 +48,7 @@ sudo cp -r src/* /usr/share/icons/Papirus
 ./papirus-folders -C cat-macchiato-lavender --theme Papirus-Dark
 cd ..
 
-cp dotfiles/Wallpapers ~
+cp -r dotfiles/Wallpapers ~
 
 #Execute themeSpotify.sh after opening spotify and login in
 
@@ -59,6 +59,12 @@ sudo pacman -S flatpak
 #sudo flatpak override com.discordapp.Discord --filesystem=home
 
 # Setting virt-manager permissions
+sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
+sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
 sudo usermod -a -G libvirt $USER
 sudo sed -i 's/user = "libvirt-qemu"/user = "$USER"/' /etc/libvirt/qemu.conf
 sudo sed -i 's/group = "libvirt-qemu"/group = "$USER"/' /etc/libvirt/qemu.conf
+
+sudo rm -r ~/ble.sh
+sudo rm -r ~/yay
+sudo rm -r ~/papirus-folders
