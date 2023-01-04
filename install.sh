@@ -32,7 +32,7 @@ cp dotfiles/.bashrc ~
 cp dotfiles/.git-prompt.sh ~
 
 #Installing programs I use
-sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pulseaudio pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
+sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar
 yay -S transmission-gtk file-roller ventoy-bin qemu-base ebtables steam vscodium timeshift 7-zip spotify-adblock
 
 
