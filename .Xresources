@@ -42,7 +42,7 @@ URxvt.boldFont: xft:Source Code Pro:semibold:pixelsize=15
 URxvt.italicFont: xft:Source Code Pro:italic:pixelsize=15
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
-URxvt.geometry: 92x24
+URxvt.geometry: 400x400
 URxvt.internalBorder: 24
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
