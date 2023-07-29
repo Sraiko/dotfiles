@@ -13,6 +13,8 @@ cd ..
 #Setting system theming configuration
 sudo cp -r dotfiles/.config ~
 
+sudo sed -i "s/noi/$USER/g" .config/nitrogen/bg-saved.cfg
+
 #Setting screen layout
 cp -r dotfiles/.screenlayout ~
 
@@ -22,7 +24,7 @@ cp dotfiles/.Xresources ~
 cp -r dotfiles/.urxvt ~
 
 #Installing needed fonts
-paru -S noto-fonts siji-ttf noto-fonts-cjk ttf-font-awesome nerd-fonts-jetbrains-mono bdf-unifont
+paru -S noto-fonts siji-ttf noto-fonts-cjk noto-fonts-emoji ttf-font-awesome bdf-unifont ttf-iosevka-nerd ttf-sourcecodepro-nerd ttf-dejavu-sans-code
 
 #Installing bash autocompletion
 git clone --recursive https://github.com/akinomyoga/ble.sh.git
@@ -33,9 +35,8 @@ cp dotfiles/.bashrc ~
 cp dotfiles/.git-prompt.sh ~
 
 #Installing programs I use
-sudo pacman -S micro nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar picom
+sudo pacman -S micro exa nitrogen firefox rofi lutris neofetch virt-manager thunar samba gvfs-smb pavucontrol python-pip scrot imagemagick dunst zenity alsa-utils arandr mpv gimp seahorse polybar gnome-disk-utility arandr yarn unrar picom
 paru -S transmission-gtk file-roller ventoy-bin qemu-base ebtables steam vscodium timeshift 7-zip spotify-adblock
-
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -53,19 +54,10 @@ cp -r dotfiles/Wallpapers ~
 
 #Execute themeSpotify.sh after opening spotify and login in
 
-#Installing discord
-sudo pacman -S flatpak
-
-#Enter manually after installing discord
-#sudo flatpak override com.discordapp.Discord --filesystem=home
-
 # Setting virt-manager permissions
-sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
-sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
-sudo usermod -a -G libvirt $USER
-sudo sed -i 's/user = "libvirt-qemu"/user = "$USER"/' /etc/libvirt/qemu.conf
-sudo sed -i 's/group = "libvirt-qemu"/group = "$USER"/' /etc/libvirt/qemu.conf
+sudo sed -i -e '/unix_sock_group/s/^#//' -e '/unix_sock_rw_perms/s/^#// /etc/libvirt/libvirtd.conf'
 
-sudo rm -r ~/ble.sh
-sudo rm -r ~/paru
-sudo rm -r ~/papirus-folders
+sudo usermod -a -G libvirt $USER
+sudo sed -i "s/libvirt-qemu/$USER/g" /etc/libvirt/qemu.conf
+
+sudo rm -r ~/ble.sh ~/paru ~/papirus-folders

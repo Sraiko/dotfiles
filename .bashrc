@@ -15,4 +15,4 @@ source ~/.local/share/blesh/ble.sh
 export PATH=$PATH:/home/$USER/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
 . "$HOME/.cargo/env"
-alias discord='discord --no-sandbox'
+alias ls="exa --icons"

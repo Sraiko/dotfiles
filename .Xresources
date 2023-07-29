@@ -36,10 +36,15 @@ urxvt*background: rgba:0036/0039/0058/c800
 !URxvt.transparent: true
 !URxvt.shading: 0.70
 
+#define font1 SauceCodePro Nerd Font Mono
+#define font2 DejaVu Sans
+#define font3 Iosevka Nerd Font
+
 !! URxvt Appearance
-URxvt.font: xft:Source Code Pro:regular:pixelsize=15
-URxvt.boldFont: xft:Source Code Pro:semibold:pixelsize=15
-URxvt.italicFont: xft:Source Code Pro:italic:pixelsize=15
+!!URxvt.font: xft:Source Code Pro:regular:pixelsize=15
+URxvt.font: xft:font1:pixelsize=15,xft:font2:pixelsize=15,xft:font3:pixelsize=15:minspace=False
+URxvt.boldFont: xft:font1:semibold:pixelsize=16,xft:font2:pixelsize=16,xft:font3:pixelsize=16:minspace=False
+URxvt.italicFont: xft:font1:italic:pixelsize=15,xft:font2:pixelsize=15,xft:font3:pixelsize=15:minspace=False
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 !URxvt.geometry: 92x24

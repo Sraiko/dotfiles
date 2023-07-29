@@ -58,7 +58,6 @@ default_border none
 # kill focused window
 bindsym $mod+c kill
 
-
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
@@ -139,7 +138,7 @@ assign [class="URxvt"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="VSCodium"] $ws4
-assign [class="Steam"] $ws5
+assign [class="steam"] $ws5
 assign [class="Lutris"] $ws5
 assign [class="discord"] $ws6
 assign [class="nuclear"] $ws7
@@ -188,7 +187,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+bindsym $mod+Shift+e exec ~/.config/polybar/scripts/powermenu.sh
 
 #lock by blurring the screen
 bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
@@ -272,17 +271,16 @@ client.urgent                $urgentred  $urgentred      $white          $purple
 #}
 
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec polybar -r example
 #set floating for special apps
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
-#for_window [class="nuclear"] floating enable
 
 #bindsym $mod+d exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
 bindsym $mod+d exec rofi -show drun
+bindsym $mod+x exec rofi -show run
 #auth with lxsession
 exec --no-startup-id lxsession
 
@@ -301,3 +299,7 @@ exec_always picom -f
 
 exec_always setxkbmap -layout 'es,es' -model pc105
 exec xset -dpms s off
+
+exec_always --no-startup-id "sh -c 'sleep 5; exec $HOME/.config/polybar/launch.sh'"
+
+exec /usr/local/bin/Obsidian.AppImage
